@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Students</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <div class="header-container">
+        <h1>Students</h1>
+        <a th:href="@{/add}" class="add-student-button">Add Student</a>
+    </div>
+    <div class="student-container" th:each="student : ${students}">
+        <div class="student-card" th:classappend="${student.hairColor}">
+            <h2 th:text="${student.name}">Student Name</h2>
+            <p><strong>Weight (lb):</strong> <span th:text="${student.weight}">Weight</span> lb</p>
+            <p><strong>Height (ft):</strong> <span th:text="${student.height}">Height</span> ft</p>
+            <p><strong>Hair Colour:</strong> <span th:text="${student.hairColor}">Hair Color</span></p>
+            <p><strong>GPA:</strong> <span th:text="${student.gpa}">GPA</span></p>
+            <p><strong>Date of Birth:</strong> <span th:text="${student.dateOfBirth}">Date of Birth</span></p>
+            <p><strong>Major:</strong> <span th:text="${student.major}">Major</span></p>
+            <p><strong>Enrollment Year:</strong> <span th:text="${student.enrollmentYear}">Enrollment Year</span></p>
+            <p><strong>Favorite Subject:</strong> <span th:text="${student.favoriteSubject}">Favorite Subject</span></p>
+            <p><strong>Email:</strong> <span th:text="${student.email}">Email</span></p>
+            <p><strong>Phone Number:</strong> <span th:text="${student.phoneNumber}">Phone Number</span></p>
+            <p><strong>Scholarship Recipient:</strong> <span th:text="${student.isScholarshipRecipient}">Scholarship Status</span></p>
+            <p><strong>Extracurricular Activities:</strong> <span th:text="${student.extracurricularActivities}">Extracurricular Activities</span></p>
+            <div class="student-actions">
+                <a th:href="@{/students/delete/{id}(id=${student.studentId})}" 
+                   onclick="return confirm('Are you sure you want to delete this student?');" class="delete">
+                    Delete
+                </a>
+                <a th:href="@{/students/edit/{id}(id=${student.studentId})}" class="edit">
+                    Edit
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

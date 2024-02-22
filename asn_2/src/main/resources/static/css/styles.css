@@ -1,0 +1,161 @@
+/* Base styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    padding: 20px 0 20px 30px; 
+    background: #333;
+    color: #fff;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Student card container */
+.student-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Individual student cards */
+.student-card {
+    flex: 1 1 calc(50% - 40px);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Student card header */
+.student-card h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Student details */
+.student-card p {
+    font-size: 0.9em;
+}
+
+/* Actions (edit/delete) */
+.student-actions a {
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.student-actions a.delete {
+    background-color: #ff4136;
+    color: #fff;
+}
+
+.student-actions a.edit {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.student-actions a.delete:hover,
+.student-actions a.edit:hover {
+    opacity: 0.9;
+}
+
+/* Responsive behavior */
+@media (max-width: 992px) {
+    .student-card {
+        flex: 1 1 calc(100% - 40px);
+    }
+}
+
+header, main, footer {
+    border: none;
+}
+
+h1 {
+    border: none;
+    margin: 0;
+    padding: 20px 0;
+    width: auto;
+    position: static;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background: #333;
+    color: #fff;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container::before {
+    content: '';
+    display: block;
+}
+
+.add-student-button {
+    position: absolute;
+    right: 100px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-student-button:hover {
+    background-color: #218838;
+}
+
+.student-actions a {
+    display: inline-block;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+}
+
+/* Delete button styles */
+.student-actions a.delete {
+    background-color: #ff4136;
+    color: white;
+}
+
+/* Edit button styles */
+.student-actions a.edit {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Hover effect for buttons */
+.student-actions a.delete:hover {
+    background-color: #e82c1c;
+}
+
+.student-actions a.edit:hover {
+    background-color: #0069d9;
+}

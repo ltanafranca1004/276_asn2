@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mt-5 mb-4">Edit Student</h1>
+                <form id="edit-student-form" th:action="@{/students/update(id=${student.studentId})}" th:object="${student}" method="post">
+                    <input type="hidden" th:field="*{studentId}" />
+                    <div class="mb-3">
+                        <input type="text" th:field="*{name}" class="form-control form-control-lg" placeholder="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" th:field="*{weight}" class="form-control form-control-lg" placeholder="Weight (lb)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" th:field="*{height}" class="form-control form-control-lg" placeholder="Height (ft)(Ex. 5.9 ft)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" th:field="*{hairColor}" class="form-control form-control-lg" placeholder="Hair Colour" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" step="0.1" th:field="*{gpa}" class="form-control form-control-lg" placeholder="GPA" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="date" th:field="*{dateOfBirth}" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" th:field="*{major}" class="form-control form-control-lg" placeholder="Major" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" th:field="*{enrollmentYear}" class="form-control form-control-lg" placeholder="Enrollment Year" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" th:field="*{favoriteSubject}" class="form-control form-control-lg" placeholder="Favorite Subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" th:field="*{email}" class="form-control form-control-lg" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" th:field="*{phoneNumber}" class="form-control form-control-lg" placeholder="Phone Number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="isScholarshipRecipient" class="form-check-label">Scholarship Recipient</label>
+                        <input class="form-check-input" type="checkbox" th:field="*{isScholarshipRecipient}">
+                    </div>
+                    <div class="mb-3">
+                        <textarea id="extracurricularActivities" th:field="*{extracurricularActivities}" class="form-control form-control-lg" placeholder="Extracurricular Activities" required></textarea>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <input class="btn btn-primary" type="submit" value="Update Student">
+                    </div>
+                    <span id="error-message" style="color: red; display: none;"></span>
+                </form>
+                <a href="/students/view" class="d-block text-center mt-3">Cancel and go back to list</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.getElementById('edit-student-form');
+            var errorMessage = document.getElementById('error-message');
+
+            form.addEventListener('submit', function(e) {
+                if (!form.checkValidity()) {
+                    e.preventDefault();
+                    errorMessage.textContent = 'Please fill out all required fields.';
+                    errorMessage.style.display = 'block';
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

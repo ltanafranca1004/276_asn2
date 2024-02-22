@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mt-5 mb-4">Add Student</h1>
+                <form id="add-student-form" action="/students/add" method="post">
+                    <div class="mb-3">
+                        <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" id="weight" name="weight" step="0.1" class="form-control form-control-lg" placeholder="Weight (lb)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" id="height" name="height" step="0.1" class="form-control form-control-lg" placeholder="Height (ft)(Ex. 5.9 ft)" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="hairColor" name="hairColor" class="form-control form-control-lg" placeholder="Hair Colour" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" id="gpa" name="gpa" step = "0.1" class="form-control form-control-lg" placeholder="GPA" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control form-control-lg" placeholder="Date of Birth" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="major" name="major" class="form-control form-control-lg" placeholder="Major" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" id="enrollmentYear" name="enrollmentYear" class="form-control form-control-lg" placeholder="Enrollment Year" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="favoriteSubject" name="favoriteSubject" class="form-control form-control-lg" placeholder="Favorite Subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control-lg" placeholder="Phone Number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="isScholarshipRecipient" class="form-check-label">Scholarship Recipient:</label>
+                        <input class="form-check-input" type="checkbox" id="isScholarshipRecipient" name="isScholarshipRecipient" value="true" th:checked="*{isScholarshipRecipient}">
+                    </div>
+                    <div class="mb-3">
+                        <textarea id="extracurricularActivities" name="extracurricularActivities" class="form-control form-control-lg" placeholder="Extracurricular Activities" required></textarea>
+                    </div>
+                    <span id="error-message" style="color: red; display: none;"></span>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit">Add Student</button>
+                    </div>
+                </form>
+                <a href="/students/view" class="d-block text-center mt-3">Back to list</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.getElementById('add-student-form');
+            var errorMessage = document.getElementById('error-message');
+
+            form.addEventListener('submit', function(e) {
+                if (!form.checkValidity()) {
+                    e.preventDefault();
+                    errorMessage.textContent = 'Please fill out all required fields.';
+                    errorMessage.style.display = 'block';
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
