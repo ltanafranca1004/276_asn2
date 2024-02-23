@@ -28,6 +28,12 @@ public class StudentController {
         return "students/showAll";
     }
 
+    // Map the root URL to the showAll view
+    @GetMapping("/")
+    public String root(Model model) {
+        return getAllStudents(model); // Call the existing method by its correct name
+    }
+
     // Method to add a new student using request parameters
     @PostMapping("/students/add")
     public String addStudent(@RequestParam Map<String, String> newStudent, HttpServletResponse response) {
