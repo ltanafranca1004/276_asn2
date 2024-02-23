@@ -11,7 +11,11 @@
         <a th:href="@{/add}" class="add-student-button">Add Student</a>
     </div>
     <div class="student-container" th:each="student : ${students}">
-        <div class="student-card" th:classappend="${student.hairColor}">
+<div class="student-card" 
+    th:style="|color: ${student.hairColor}; 
+               border-color: ${student.hairColor}; 
+               box-shadow: 0px 0px ${student.extracurricularActivities != null ? student.extracurricularActivities.length() * 2 : 0}px 0px rgba(0,0,0,0.5); 
+               border-width: ${2024 - student.enrollmentYear != null ? (2024 - student.enrollmentYear) / 4 : 1}px;|">
             <h2 th:text="${student.name}">Student Name</h2>
             <p><strong>Weight (lb):</strong> <span th:text="${student.weight}">Weight</span> lb</p>
             <p><strong>Height (ft):</strong> <span th:text="${student.height}">Height</span> ft</p>

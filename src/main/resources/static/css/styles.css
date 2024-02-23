@@ -36,6 +36,9 @@ h1 {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
+    border: 1px solid #ddd; /* For visibility */
+    position: relative; /* To position the actions absolutely */
+    color: inherit; /* Ensure that the font color is inherited from the inline style */
 }
 
 .student-card:hover {
@@ -158,4 +161,10 @@ h1 {
 
 .student-actions a.edit:hover {
     background-color: #0069d9;
+}
+
+.student-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
